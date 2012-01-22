@@ -1,12 +1,13 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
-require "test/unit"
-require_relative "../lib/ucooll.rb"
+require 'test/unit'
+require_relative '../lib/ucooll.rb'
 
 class ActitivyTest < Test::Unit::TestCase
+    include UCooLL
     def test_create_activity
-        create_activity :Definition, :expression, :meaning, :related, :author
+        create_activity :definition, :expression, :meaning, :related, :author
         d=Definition.new do
             expression "mon S.I.G.L.E."
             meaning "signification"
@@ -21,7 +22,8 @@ class ActitivyTest < Test::Unit::TestCase
     end
 
     def test_defining_method
-         d=defining "mon S.I.G.L.E." do
+         d=definition  do
+            expression "mon S.I.G.L.E."
             meaning "signification"
             related "O.T.H.E.R."
             author "moi"
