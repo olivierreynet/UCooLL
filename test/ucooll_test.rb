@@ -5,13 +5,15 @@ require "test/unit"
 require_relative "../lib/ucooll.rb"
 
 class ActitivyTest < Test::Unit::TestCase
-    def test_defition_constructor
+    def test_create_activity
+        create_activity :Definition, :expression, :meaning, :related, :author
         d=Definition.new do
             expression "mon S.I.G.L.E."
             meaning "signification"
             related "O.T.H.E.R."
             author "moi"
         end
+        puts "Defition created : #{d.elements}"
         assert_equal("mon S.I.G.L.E.",d.elements[:expression])
         assert_equal("signification",d.elements[:meaning])
         assert_equal("O.T.H.E.R.",d.elements[:related])

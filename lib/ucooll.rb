@@ -1,29 +1,28 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
+
 class Activity 
     attr_accessor :elements
-    def initialize
-        @elements={}
-    end
-    def self.element(key)
-        define_method(key) do |value|
-            @elements[key]=value
-        end
-    end
-end
-
-class Definition < Activity
     def initialize(&block)
-        super
+        @elements={}
         if block_given?
             instance_eval(&block)
         end
     end
-    element :expression
-    element :meaning
-    element :related
-    element :author
+end
+
+def create_activity(name,*args)
+    Object.const_set(name,Class.new(Activity)) if not Object.const_defined?(name)
+    class_name = Object.const_get(name)
+    puts "New class : #{class_name}"
+    args.each do |a|
+        class_name.class_eval do 
+            define_method a do |value|
+                @elements[a]=value
+            end
+        end
+    end
 end
 
 def defining(expr,&block)
