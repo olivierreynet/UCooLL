@@ -38,13 +38,3 @@ module UCooLL
 
 end
 
-#    def defining(expr,&block)
-#        if block_given?
-#            d=Definition.new do 
-#                expression expr 
-#                instance_eval(&block)
-#            end
-#            return d
-#        end
-#   end
-
