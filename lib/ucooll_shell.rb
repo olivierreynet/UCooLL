@@ -24,3 +24,4 @@ module IRB # :nodoc:
 end
 require_relative  'ucooll.rb'
 IRB.start_session(binding)
+include UCooLL
